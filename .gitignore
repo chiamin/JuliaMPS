@@ -1,0 +1,6 @@
+# Julia
+/build_sysimage/Manifest.toml
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/docs/build/

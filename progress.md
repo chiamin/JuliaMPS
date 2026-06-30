@@ -4,6 +4,14 @@
 
 最後更新：**Phase 6 完成 — 全部 33 步驟完成（364 tests passing）** 🎉
 
+## 後續修正
+
+- **DMRG 截斷後歸一（2026-06-14）**：`sweep!` 結尾加 `LinearAlgebra.normalize!(engine.psi)`。
+  原本截斷會讓 state norm 略低於 1（每個 SVD 丟掉一點權重），且不在 svd_split 補回。
+  改在 MPS 層歸一（sweep 結束時 MPS 有單一 center，normalize! 只 rescale center tensor）。
+  energy 是 Rayleigh quotient 不受影響；測試全過（364/364）。驗證：maxdim=4 的截斷 DMRG
+  後 `norm(psi) == 1.0`。
+
 ---
 
 ## Phase 1：基礎工具 ✅

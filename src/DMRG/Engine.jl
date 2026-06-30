@@ -82,6 +82,13 @@ function sweep!(engine::DMRGEngine{T};
         push!(energies, E); push!(truncs, tr)
     end
 
+    # Truncation at the SVD steps discards a little weight, so after the sweep
+    # the state norm is slightly below 1.  Renormalize once here: the MPS has a
+    # single orthogonality center at the end of the sweep, so normalize! simply
+    # rescales that center tensor.  (Energy is a Rayleigh quotient and is
+    # unaffected; this only fixes the overall scale ⟨ψ|ψ⟩ = 1.)
+    LinearAlgebra.normalize!(engine.psi)
+
     avg_trunc = isempty(truncs) ? 0.0 : sum(truncs) / length(truncs)
     return energies[end], avg_trunc
 end
