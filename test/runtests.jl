@@ -14,4 +14,5 @@ using Test
     include("test_effective_operators.jl")
     include("test_dmrg.jl")
     include("test_tdvp.jl")
+    include("test_subspace_expansion.jl")
 end

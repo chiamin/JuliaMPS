@@ -33,6 +33,7 @@ include("DMRG/Environment.jl")
 include("DMRG/EffectiveOperators.jl")
 include("MPS/Operations.jl")        # depends on Environment + EffOperator
 include("DMRG/Engine.jl")
+include("DMRG/SubspaceExpansion.jl")
 
 # Phase 6: TDVP
 include("TDVP/Engine.jl")
@@ -75,6 +76,7 @@ export AutoMPO, add!, to_mpo
 export OperatorEnv, VectorEnv, update_envs!, getenv
 export EffOperator, EffVector, apply, add_term!
 export DMRGEngine, sweep!, dmrg!
+export expansion_term, expand_bond
 
 # TDVP
 export TDVPEngine
